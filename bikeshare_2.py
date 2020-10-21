@@ -22,7 +22,7 @@ def get_filters():
     # get user input for city (chicago, new york city, washington). HINT: Use a while loop to handle invalid inputs
     city = ''
     while city not in CITY_DATA.keys():
-        print("\nPlease enter city (chicago, new york city, washington):")
+        print("\nPlease enter city (chicago, new york city or washington):")
         #Taking user input and converting into lower to standardize them
         city = input().lower()
 
@@ -40,7 +40,7 @@ def get_filters():
         if month not in MONTH_DATA.keys():
             print("\nInvalid input. Please try again in the accepted input format.")
 
-    # get user input for day of week (all, monday, tuesday, ... sunday)    
+    # get user input for day of week (all, monday, tuesday, ... sunday)
     #Creating a list to store all the days including the 'all' option
     DAY_DATA = ['all', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday']
     day = ''
@@ -53,7 +53,7 @@ def get_filters():
 
     print(f"\nYou have chosen: city: {city.upper()}, month/s: {month.upper()} and day/s: {day.upper()}.")
     print('-'*65)
-    
+
     #Returning the city, month and day selections
     return city, month, day
 
@@ -66,7 +66,7 @@ def load_data(city, month, day):
         (str) city - name of the city to analyze
         (str) month - name of the month to filter by, or "all" to apply no month filter
         (str) day - name of the day of week to filter by, or "all" to apply no day filter
-    Returns:   
+    Returns:
         df - Pandas DataFrame containing city data filtered by month and day
     """
     # load data file into a dataframe
@@ -172,7 +172,7 @@ def trip_duration_stats(df):
     sum_hours = mean_travel_time//3600%60
     sum_days = mean_travel_time//24//3600
     print('The mean travel times for passengers are {} days, {} hours, {} minutes and {} seconds'.format(sum_days, sum_hours, sum_minutes, round(sum_seconds, ndigits=(0))))
-   
+
     print("\nThis took %s seconds." % round((time.time() - start_time), ndigits=6))
     print('-'*40)
 
@@ -186,14 +186,14 @@ def user_stats(df):
     # Display counts of user types
     user_types = df['User Type'].value_counts()
     print("The count of user types from the given data is: \n" + str(user_types))
-    
+
     # Display counts of gender
     try:
         gender = df['Gender'].value_counts()
         print("\nThe count of Gender from the given data is: \n" + str(gender))
     except:
         print("\nThere is no 'Gender' column in this file.")
-        
+
     # Display earliest, most recent, and most common year of birth
     try:
         earliest_birth = df['Birth Year'].min()
@@ -204,7 +204,7 @@ def user_stats(df):
         print('Most common birth from the given data is: {}\n'.format(int(most_common_birth)))
     except:
         print("There is no birth year details in this file.")
-        
+
     print("\nThis took %s seconds." % round((time.time() - start_time), ndigits=6))
     print('-'*40)
 
@@ -229,7 +229,7 @@ def main():
         city, month, day = get_filters()
         df = load_data(city, month, day)
         time_stats(df)
-        station_stats(df)        
+        station_stats(df)
         trip_duration_stats(df)
         user_stats(df)
         while True:
@@ -238,10 +238,10 @@ def main():
                 break
             display_five_rows_data(df)
             break
-       
+
         restart = input('\nWould you like to restart? Enter yes or no.\n')
         if restart.lower() != 'yes':
             break
-         
+
 if __name__ == "__main__":
 	main()
