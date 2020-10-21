@@ -5,7 +5,7 @@ Python Script to Explore US Bikeshare Data
 Description
 This project Uses Python to understand U.S. bikeshare data.
 The script calculates statistics and build an interactive environment where
-the user can choose and filter for a dataset to analyze.
+the user can choose and filter for a dataset to analyze. The datasets are in .CSV format.
 
 You can run the script using a Python integrated development environment (IDE) such as Spyder. To install Spyder, you will need to download the Anaconda installer.
 This script is written in Python 3, so you will need the Python 3.x version of the installer. After downloading and installing Anaconda, you will find the Spyder IDE by opening Anaconda Navigator.
