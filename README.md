@@ -23,6 +23,8 @@ The Chicago and New York City files also have the following two columns:
 * Gender
 * Birth Year
 
+The data files are named chicago.csv, new-york-city.csv and washington.csv.
+
 Statistics Computed
 The code is written to provide the following information:
 
